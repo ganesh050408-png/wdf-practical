@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - Attendance Record</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Accessibility: Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header */
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2, .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid #cccccc;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e6f0fa;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9fbfd;
+    }
+
+    tfoot tr {
+      background-color: #eef5fb;
+      font-weight: bold;
+    }
+
+    /* Status Badges */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 12px;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    .badge-green {
+      background-color: #e2f0d9;
+      color: #385723;
+      border: 1px solid #c5e0b4;
+    }
+
+    .badge-yellow {
+      background-color: #fff2cc;
+      color: #7f6000;
+      border: 1px solid #ffe699;
+    }
+
+    /* Note box */
+    .info-box {
+      background-color: #f0f7ff;
+      border-left: 4px solid #0056b3;
+      padding: 12px 15px;
+      margin-top: 15px;
+      font-size: 13px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html" class="active">Attendance</a></li>
+      <li><a href="Assignment.html">Assignments</a></li>
+      <li><a href="Events.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="resutls.html">Results</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <section class="card">
+      <h2>Subject-Wise Attendance Record</h2>
+      <p>
+        Student: <strong>Rahul Sharma</strong> | Enrollment No: <strong>2024CS1042</strong> | Semester: <strong>4th Semester</strong>
+      </p>
+      <p>
+        Below is the detailed attendance summary for all theory and laboratory classes conducted so far in the current academic semester:
+      </p>
+
+      <div class="table-container">
+        <table>
+          <caption>Current Semester Subject Attendance Table</caption>
+          <thead>
+            <tr>
+              <th scope="col">Subject Code</th>
+              <th scope="col">Subject Name</th>
+              <th scope="col">Total Classes Held</th>
+              <th scope="col">Classes Attended</th>
+              <th scope="col">Attendance Percentage</th>
+              <th scope="col">Eligibility Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CS401</td>
+              <td>Database Management Systems</td>
+              <td>32</td>
+              <td>29</td>
+              <td><strong>90.6%</strong></td>
+              <td><span class="badge badge-green">Eligible</span></td>
+            </tr>
+            <tr>
+              <td>CS402</td>
+              <td>Operating Systems</td>
+              <td>30</td>
+              <td>26</td>
+              <td><strong>86.7%</strong></td>
+              <td><span class="badge badge-green">Eligible</span></td>
+            </tr>
+            <tr>
+              <td>CS403</td>
+              <td>Design &amp; Analysis of Algorithms</td>
+              <td>34</td>
+              <td>28</td>
+              <td><strong>82.4%</strong></td>
+              <td><span class="badge badge-green">Eligible</span></td>
+            </tr>
+            <tr>
+              <td>CS404</td>
+              <td>Software Engineering</td>
+              <td>28</td>
+              <td>24</td>
+              <td><strong>85.7%</strong></td>
+              <td><span class="badge badge-green">Eligible</span></td>
+            </tr>
+            <tr>
+              <td>CS405</td>
+              <td>DBMS Laboratory</td>
+              <td>12</td>
+              <td>11</td>
+              <td><strong>91.7%</strong></td>
+              <td><span class="badge badge-green">Eligible</span></td>
+            </tr>
+            <tr>
+              <td>CS406</td>
+              <td>Operating Systems Laboratory</td>
+              <td>12</td>
+              <td>9</td>
+              <td><strong>75.0%</strong></td>
+              <td><span class="badge badge-yellow">Borderline Eligible</span></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2"><strong>Cumulative Total / Average</strong></td>
+              <td><strong>148</strong></td>
+              <td><strong>127</strong></td>
+              <td><strong>85.8%</strong></td>
+              <td><span class="badge badge-green">Overall Eligible</span></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="info-box">
+        <p><strong>Attendance Policy Guidelines:</strong></p>
+        <p>1. As per university regulations, a minimum of 75% attendance in each subject is mandatory to be eligible for end-semester examinations.</p>
+        <p>2. Students falling between 65% and 74% require medical certificate verification and approval from the Head of the Department.</p>
+        <p>3. Attendance records are updated weekly by respective subject teachers.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - Examination Results</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Accessibility: Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header */
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2, .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid #cccccc;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e6f0fa;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9fbfd;
+    }
+
+    tfoot tr {
+      background-color: #eef5fb;
+      font-weight: bold;
+    }
+
+    /* Status Badges */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 12px;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    .badge-green {
+      background-color: #e2f0d9;
+      color: #385723;
+      border: 1px solid #c5e0b4;
+    }
+
+    .badge-blue {
+      background-color: #e6f0fa;
+      color: #003366;
+      border: 1px solid #b8d2eb;
+    }
+
+    /* Score Summary Box */
+    .score-box {
+      background-color: #f8fbfe;
+      border: 1px solid #b8d2eb;
+      padding: 15px 18px;
+      border-radius: 4px;
+      margin-top: 15px;
+    }
+
+    .score-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .score-item {
+      flex: 1 1 calc(25% - 15px);
+      min-width: 150px;
+      background-color: #ffffff;
+      border: 1px solid #d0d7de;
+      padding: 10px;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    .score-item span {
+      display: block;
+      font-size: 12px;
+      color: #555555;
+    }
+
+    .score-item strong {
+      display: block;
+      font-size: 18px;
+      color: #003366;
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+      .score-item {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html">Attendance</a></li>
+      <li><a href="Assignment.html">Assignments</a></li>
+      <li><a href="Events.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="resutls.html" class="active">Results</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <section class="card">
+      <h2>Semester Examination Results</h2>
+      <p>
+        Candidate: <strong>Rahul Sharma</strong> &nbsp;|&nbsp; 
+        Enrollment No: <strong>2024CS1042</strong> &nbsp;|&nbsp; 
+        Program: <strong>B.Tech Computer Science &amp; Engineering</strong>
+      </p>
+
+      <h3>Semester 3 (Previous Examination) - Grade Sheet</h3>
+      <p>Exam Session: November - December 2025 | Examination Type: Regular</p>
+
+      <div class="table-container">
+        <table>
+          <caption>Semester 3 Detailed Marks &amp; Grades</caption>
+          <thead>
+            <tr>
+              <th scope="col">Course Code</th>
+              <th scope="col">Course Title</th>
+              <th scope="col">Credits</th>
+              <th scope="col">Internal Marks (40)</th>
+              <th scope="col">External Marks (60)</th>
+              <th scope="col">Total Marks (100)</th>
+              <th scope="col">Grade</th>
+              <th scope="col">Result Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CS301</td>
+              <td>Data Structures &amp; Algorithms</td>
+              <td>4</td>
+              <td>36</td>
+              <td>52</td>
+              <td>88</td>
+              <td>A+ (Excellent)</td>
+              <td><span class="badge badge-green">PASS</span></td>
+            </tr>
+            <tr>
+              <td>CS302</td>
+              <td>Digital Logic &amp; Computer Design</td>
+              <td>4</td>
+              <td>34</td>
+              <td>48</td>
+              <td>82</td>
+              <td>A (Very Good)</td>
+              <td><span class="badge badge-green">PASS</span></td>
+            </tr>
+            <tr>
+              <td>CS303</td>
+              <td>Discrete Mathematics</td>
+              <td>4</td>
+              <td>38</td>
+              <td>54</td>
+              <td>92</td>
+              <td>O (Outstanding)</td>
+              <td><span class="badge badge-green">PASS</span></td>
+            </tr>
+            <tr>
+              <td>CS304</td>
+              <td>Computer Organization &amp; Architecture</td>
+              <td>4</td>
+              <td>32</td>
+              <td>45</td>
+              <td>77</td>
+              <td>B+ (Good)</td>
+              <td><span class="badge badge-green">PASS</span></td>
+            </tr>
+            <tr>
+              <td>CS305</td>
+              <td>Data Structures Laboratory</td>
+              <td>2</td>
+              <td>38</td>
+              <td>55</td>
+              <td>93</td>
+              <td>O (Outstanding)</td>
+              <td><span class="badge badge-green">PASS</span></td>
+            </tr>
+            <tr>
+              <td>CS306</td>
+              <td>Digital Electronics Laboratory</td>
+              <td>2</td>
+              <td>37</td>
+              <td>51</td>
+              <td>88</td>
+              <td>A+ (Excellent)</td>
+              <td><span class="badge badge-green">PASS</span></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3"><strong>Total</strong></td>
+              <td><strong>215</strong></td>
+              <td><strong>305</strong></td>
+              <td><strong>520 / 600</strong></td>
+              <td colspan="2"><span class="badge badge-green">PASSED</span></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Performance Summary -->
+      <div class="score-box">
+        <h3>Performance Summary - Semester 3</h3>
+        <div class="score-grid">
+          <div class="score-item">
+            <span>Total Marks</span>
+            <strong>520 / 600</strong>
+          </div>
+          <div class="score-item">
+            <span>Percentage</span>
+            <strong>86.67%</strong>
+          </div>
+          <div class="score-item">
+            <span>Semester SGPA</span>
+            <strong>8.85 / 10.0</strong>
+          </div>
+          <div class="score-item">
+            <span>Cumulative CGPA</span>
+            <strong>8.72 / 10.0</strong>
+          </div>
+        </div>
+        <p style="margin-top: 12px; font-size: 14px;">
+          <strong>Final Result:</strong> <span class="badge badge-green">FIRST CLASS WITH DISTINCTION</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Semester 4 Status -->
+    <section class="card">
+      <h3>Semester 4 Results Status</h3>
+      <p>
+        Theory and practical examinations for the 4th semester are scheduled for November - December 2026. 
+        Official results will be updated here after evaluation and university board approval.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+</body>
+</html>

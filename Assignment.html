@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - Assignments</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Accessibility: Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header */
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2, .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid #cccccc;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e6f0fa;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9fbfd;
+    }
+
+    /* Status Badges */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 12px;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    .badge-green {
+      background-color: #e2f0d9;
+      color: #385723;
+      border: 1px solid #c5e0b4;
+    }
+
+    .badge-yellow {
+      background-color: #fff2cc;
+      color: #7f6000;
+      border: 1px solid #ffe699;
+    }
+
+    .badge-blue {
+      background-color: #e6f0fa;
+      color: #003366;
+      border: 1px solid #b8d2eb;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #333333;
+    }
+
+    input[type="text"],
+    select,
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      max-width: 480px;
+      padding: 8px 10px;
+      border: 1px solid #999999;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 70px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: #0056b3;
+      color: #ffffff;
+      padding: 9px 18px;
+      text-decoration: none;
+      border: 1px solid #004085;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #004085;
+    }
+
+    .info-note {
+      font-size: 13px;
+      color: #555555;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html">Attendance</a></li>
+      <li><a href="Assignment.html" class="active">Assignments</a></li>
+      <li><a href="Events.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="resutls.html">Results</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Assignment Listing Section -->
+    <section class="card">
+      <h2>Semester 4 Academic Assignments</h2>
+      <p>
+        Track current assignment submissions, due dates, and grading status for all enrolled subjects:
+      </p>
+
+      <div class="table-container">
+        <table>
+          <caption>Semester 4 Assignment List</caption>
+          <thead>
+            <tr>
+              <th scope="col">Subject</th>
+              <th scope="col">Assignment Title</th>
+              <th scope="col">Assigned Date</th>
+              <th scope="col">Due Date</th>
+              <th scope="col">Max Marks</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CS401 - DBMS</td>
+              <td>Relational Algebra &amp; Schema Design</td>
+              <td>10-Sep-2026</td>
+              <td>20-Sep-2026</td>
+              <td>20</td>
+              <td><span class="badge badge-green">Submitted (18/20)</span></td>
+            </tr>
+            <tr>
+              <td>CS402 - OS</td>
+              <td>CPU Scheduling Algorithms in C</td>
+              <td>22-Sep-2026</td>
+              <td>05-Oct-2026</td>
+              <td>25</td>
+              <td><span class="badge badge-green">Submitted (23/25)</span></td>
+            </tr>
+            <tr>
+              <td>CS403 - DAA</td>
+              <td>Divide and Conquer &amp; Recurrences</td>
+              <td>02-Oct-2026</td>
+              <td>16-Oct-2026</td>
+              <td>20</td>
+              <td><span class="badge badge-green">Submitted (Under Review)</span></td>
+            </tr>
+            <tr>
+              <td>CS401 - DBMS</td>
+              <td>Complex SQL Queries, Views &amp; Triggers</td>
+              <td>12-Oct-2026</td>
+              <td>28-Oct-2026</td>
+              <td>20</td>
+              <td><span class="badge badge-yellow">Pending Submission</span></td>
+            </tr>
+            <tr>
+              <td>CS402 - OS</td>
+              <td>Producer-Consumer Problem via Semaphores</td>
+              <td>16-Oct-2026</td>
+              <td>02-Nov-2026</td>
+              <td>25</td>
+              <td><span class="badge badge-blue">In Progress</span></td>
+            </tr>
+            <tr>
+              <td>CS404 - SE</td>
+              <td>SRS Specification Document (Hospital System)</td>
+              <td>18-Oct-2026</td>
+              <td>08-Nov-2026</td>
+              <td>30</td>
+              <td><span class="badge badge-yellow">Pending Submission</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Upload Assignment Sample Form -->
+    <section class="card">
+      <h2>Submit New Assignment (Sample Form)</h2>
+      <p>Fill out the assignment details below to simulate an assignment upload:</p>
+
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="assign-subject">Select Subject:</label>
+          <select id="assign-subject" name="subject" required>
+            <option value="">-- Choose Subject --</option>
+            <option value="CS401">CS401 - Database Management Systems</option>
+            <option value="CS402">CS402 - Operating Systems</option>
+            <option value="CS403">CS403 - Design &amp; Analysis of Algorithms</option>
+            <option value="CS404">CS404 - Software Engineering</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="assign-title">Assignment Title / Topic:</label>
+          <input type="text" id="assign-title" name="title" placeholder="e.g. Complex SQL Queries" required>
+        </div>
+
+        <div class="form-group">
+          <label for="assign-file">Upload Assignment File (PDF, DOCX, ZIP):</label>
+          <input type="file" id="assign-file" name="assignment_file" required>
+        </div>
+
+        <div class="form-group">
+          <label for="assign-comments">Student Comments / Notes (Optional):</label>
+          <textarea id="assign-comments" name="comments" rows="3" placeholder="Enter any submission remarks or partner roll numbers"></textarea>
+        </div>
+
+        <div>
+          <button type="submit" class="btn">Submit Assignment</button>
+        </div>
+
+        <p class="info-note">
+          * Practical Note: This is a frontend demo form without server-side processing or database storage.
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+</body>
+</html>

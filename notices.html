@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - College Notices</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Accessibility: Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header */
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2, .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    /* Notice Item Styles */
+    .notice-item {
+      border: 1px solid #d0d7de;
+      border-left: 4px solid #0056b3;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      border-radius: 3px;
+      background-color: #fbfdff;
+    }
+
+    .notice-item h3 {
+      color: #003366;
+      margin-bottom: 6px;
+      border-bottom: none;
+      padding-bottom: 0;
+      font-size: 16px;
+    }
+
+    .notice-meta {
+      font-size: 13px;
+      color: #444444;
+      margin-bottom: 10px;
+      background-color: #eef5fb;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+
+    .notice-meta strong {
+      color: #003366;
+    }
+
+    .notice-item p {
+      font-size: 14px;
+      color: #333333;
+      margin-bottom: 6px;
+    }
+
+    .notice-authority {
+      font-size: 13px;
+      color: #666666;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html">Attendance</a></li>
+      <li><a href="Assignment.html">Assignments</a></li>
+      <li><a href="Events.html">Events</a></li>
+      <li><a href="notices.html" class="active">Notices</a></li>
+      <li><a href="resutls.html">Results</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Official Notices Section -->
+    <section class="card">
+      <h2>College Notices &amp; Circulars</h2>
+      <p>
+        Official announcements, examination schedules, administrative instructions, and campus circulars:
+      </p>
+
+      <!-- Notice 1 -->
+      <article class="notice-item">
+        <h3>Mid-Term Sessional Examination Schedule (Nov 2026)</h3>
+        <div class="notice-meta">
+          <strong>Notice No:</strong> CEC/EXAM/2026/42 &nbsp;|&nbsp; 
+          <strong>Date:</strong> 20-October-2026
+        </div>
+        <p>
+          The Mid-Term Sessional Examinations for 4th Semester B.Tech students will commence from Monday, 10th November 2026. The examination will carry 30 marks per theory subject and will be held in the respective department classrooms. Detailed subject-wise timetable is updated on the Timetable page. Admit cards can be collected from the department office starting 05-Nov-2026.
+        </p>
+        <p class="notice-authority">
+          Issued by: Controller of Examinations, City Engineering College
+        </p>
+      </article>
+
+      <!-- Notice 2 -->
+      <article class="notice-item">
+        <h3>Central Library Clearance and Book Renewal Notice</h3>
+        <div class="notice-meta">
+          <strong>Notice No:</strong> CEC/LIB/2026/18 &nbsp;|&nbsp; 
+          <strong>Date:</strong> 17-October-2026
+        </div>
+        <p>
+          All students who have issued textbooks or reference books from the Central Library before 30th September 2026 are advised to return or renew their books on or before 30th October 2026. Overdue fines of Rs. 5 per day will apply to all unrenewed books after the due date.
+        </p>
+        <p class="notice-authority">
+          Issued by: Head Librarian, Central Library
+        </p>
+      </article>
+
+      <!-- Notice 3 -->
+      <article class="notice-item">
+        <h3>National Scholarship Portal (NSP) Renewal 2026-27</h3>
+        <div class="notice-meta">
+          <strong>Notice No:</strong> CEC/SCH/2026/09 &nbsp;|&nbsp; 
+          <strong>Date:</strong> 12-October-2026
+        </div>
+        <p>
+          Students who received government scholarships in their 1st and 2nd academic years must submit their scholarship renewal verification forms along with previous semester mark sheets to the Student Welfare Section (Room 104) before 31st October 2026. Late submissions cannot be uploaded to the central portal.
+        </p>
+        <p class="notice-authority">
+          Issued by: Student Welfare Officer
+        </p>
+      </article>
+
+      <!-- Notice 4 -->
+      <article class="notice-item">
+        <h3>Semester Tuition Fee Installment Deadline</h3>
+        <div class="notice-meta">
+          <strong>Notice No:</strong> CEC/ACC/2026/33 &nbsp;|&nbsp; 
+          <strong>Date:</strong> 05-October-2026
+        </div>
+        <p>
+          The final date for paying the 2nd installment of semester tuition fees without a late fine is 15th November 2026. Payments can be completed online through net banking or via Demand Draft in favour of "City Engineering College" at the accounts counter.
+        </p>
+        <p class="notice-authority">
+          Issued by: Accounts &amp; Finance Department
+        </p>
+      </article>
+
+      <!-- Notice 5 -->
+      <article class="notice-item">
+        <h3>One-Day Industrial Visit to IT Software Park</h3>
+        <div class="notice-meta">
+          <strong>Notice No:</strong> CEC/CSE/2026/15 &nbsp;|&nbsp; 
+          <strong>Date:</strong> 28-September-2026
+        </div>
+        <p>
+          An educational industrial visit for 4th Semester Computer Science students to the State Software Technology Park is scheduled for 25th November 2026. Interested students must submit parental consent forms to Prof. M. Joshi by 10th November 2026. Bus transportation and entry passes are provided by the college.
+        </p>
+        <p class="notice-authority">
+          Issued by: Head of Department, Computer Science &amp; Engineering
+        </p>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+</body>
+</html>

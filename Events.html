@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - College Events</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Accessibility: Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header */
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2, .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    /* Event Card Item */
+    .event-item {
+      border: 1px solid #d0d7de;
+      border-left: 4px solid #0056b3;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      border-radius: 3px;
+      background-color: #fbfdff;
+    }
+
+    .event-item h3 {
+      color: #003366;
+      margin-bottom: 8px;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .event-meta {
+      font-size: 13px;
+      color: #444444;
+      margin-bottom: 8px;
+      background-color: #eef5fb;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    .event-meta strong {
+      color: #003366;
+    }
+
+    .event-item p {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #333333;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      max-width: 480px;
+      padding: 8px 10px;
+      border: 1px solid #999999;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: #0056b3;
+      color: #ffffff;
+      padding: 9px 18px;
+      text-decoration: none;
+      border: 1px solid #004085;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #004085;
+    }
+
+    .info-note {
+      font-size: 13px;
+      color: #555555;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html">Attendance</a></li>
+      <li><a href="Assignment.html">Assignments</a></li>
+      <li><a href="Events.html" class="active">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="resutls.html">Results</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Events List Section -->
+    <section class="card">
+      <h2>Upcoming College Events &amp; Activities</h2>
+      <p>
+        Check the schedule of technical, cultural, and sports events organized by City Engineering College:
+      </p>
+
+      <!-- Event 1 -->
+      <article class="event-item">
+        <h3>1. TechNova 2026 - National Level Technical Fest</h3>
+        <div class="event-meta">
+          <strong>Date:</strong> 14 - 15 November 2026 &nbsp;|&nbsp; 
+          <strong>Time:</strong> 09:30 AM to 05:00 PM &nbsp;|&nbsp; 
+          <strong>Venue:</strong> College Main Auditorium &amp; CSE Department Labs
+        </div>
+        <p>
+          <strong>Description:</strong> TechNova is the annual technical festival featuring competitive coding contests, blind programming, web development sprint, tech quiz, and technical paper presentations. Open to all engineering students across departments.
+        </p>
+        <p>
+          <strong>Faculty Coordinator:</strong> Dr. K. Raman (Department of CSE)
+        </p>
+      </article>
+
+      <!-- Event 2 -->
+      <article class="event-item">
+        <h3>2. 24-Hour Smart Campus Hackathon</h3>
+        <div class="event-meta">
+          <strong>Date:</strong> 21 - 22 November 2026 &nbsp;|&nbsp; 
+          <strong>Time:</strong> Starts 10:00 AM (Continuous 24 Hours) &nbsp;|&nbsp; 
+          <strong>Venue:</strong> Central Computing Center, 2nd Floor
+        </div>
+        <p>
+          <strong>Description:</strong> Teams of 3 to 4 students collaborate to prototype web and mobile software solutions for campus automation, energy conservation, and student grievance tracking. Mentors from IT companies will evaluate final prototypes.
+        </p>
+        <p>
+          <strong>Faculty Coordinator:</strong> Prof. S. Sen (Operating Systems Faculty)
+        </p>
+      </article>
+
+      <!-- Event 3 -->
+      <article class="event-item">
+        <h3>3. Annual Inter-Department Sports Tournament</h3>
+        <div class="event-meta">
+          <strong>Date:</strong> 05 - 08 December 2026 &nbsp;|&nbsp; 
+          <strong>Time:</strong> 08:00 AM to 04:30 PM &nbsp;|&nbsp; 
+          <strong>Venue:</strong> College Sports Ground &amp; Indoor Gymnasium
+        </div>
+        <p>
+          <strong>Description:</strong> Annual athletic and team sports competitions including Cricket, Football, Volleyball, Badminton, Table Tennis, 100m sprint, and Chess. Trophies and medals awarded at the closing ceremony.
+        </p>
+        <p>
+          <strong>Faculty Coordinator:</strong> Coach V. Patil (Physical Education Director)
+        </p>
+      </article>
+
+      <!-- Event 4 -->
+      <article class="event-item">
+        <h3>4. Workshop on Cloud Deployment &amp; DevOps</h3>
+        <div class="event-meta">
+          <strong>Date:</strong> 18 December 2026 &nbsp;|&nbsp; 
+          <strong>Time:</strong> 10:00 AM to 01:00 PM &nbsp;|&nbsp; 
+          <strong>Venue:</strong> Seminar Hall A, Science Block
+        </div>
+        <p>
+          <strong>Description:</strong> A practical introductory workshop covering Linux command line essentials, containerization with Docker, Git version control, and cloud server hosting fundamentals for pre-final year students.
+        </p>
+        <p>
+          <strong>Faculty Coordinator:</strong> Prof. M. Joshi (Software Engineering Faculty)
+        </p>
+      </article>
+    </section>
+
+    <!-- Event Registration Demo Form -->
+    <section class="card">
+      <h2>Register for an Event (Sample Form)</h2>
+      <p>Select an event below to submit your student participation entry:</p>
+
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="event-select">Choose Event:</label>
+          <select id="event-select" name="event" required>
+            <option value="">-- Choose an Event --</option>
+            <option value="technova">TechNova 2026 - Technical Fest</option>
+            <option value="hackathon">24-Hour Smart Campus Hackathon</option>
+            <option value="sports">Annual Inter-Department Sports Tournament</option>
+            <option value="devops">Workshop on Cloud Deployment &amp; DevOps</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="participant-name">Student Name:</label>
+          <input type="text" id="participant-name" name="name" value="Rahul Sharma" required>
+        </div>
+
+        <div class="form-group">
+          <label for="participant-roll">Enrollment / Roll Number:</label>
+          <input type="text" id="participant-roll" name="roll" value="2024CS1042" required>
+        </div>
+
+        <div>
+          <button type="submit" class="btn">Register for Event</button>
+        </div>
+
+        <p class="info-note">
+          * Practical Note: This is a frontend demo form without server-side processing or database storage.
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+</body>
+</html>

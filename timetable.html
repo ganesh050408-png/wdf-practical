@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - Class Timetable</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Accessibility: Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header */
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2, .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 750px;
+    }
+
+    th, td {
+      border: 1px solid #cccccc;
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #e6f0fa;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    .day-col {
+      background-color: #f0f7ff;
+      font-weight: bold;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .break-cell {
+      background-color: #f1f3f5;
+      color: #666666;
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    .lab-cell {
+      background-color: #eaf6ec;
+      color: #276738;
+      font-weight: bold;
+    }
+
+    /* Legend Box */
+    .legend-box {
+      background-color: #f8fbfe;
+      border: 1px solid #b8d2eb;
+      padding: 15px 18px;
+      border-radius: 4px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    .legend-box ul {
+      margin-left: 20px;
+      margin-top: 8px;
+    }
+
+    .legend-box li {
+      margin-bottom: 4px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html">Attendance</a></li>
+      <li><a href="Assignment.html">Assignments</a></li>
+      <li><a href="Events.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="resutls.html">Results</a></li>
+      <li><a href="timetable.html" class="active">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <section class="card">
+      <h2>Weekly Class Timetable</h2>
+      <p>
+        <strong>Academic Session:</strong> 2025 - 2026 &nbsp;|&nbsp; 
+        <strong>Department:</strong> Computer Science &amp; Engineering &nbsp;|&nbsp; 
+        <strong>Class:</strong> Semester 4 - Section B &nbsp;|&nbsp; 
+        <strong>Classroom:</strong> Room 302
+      </p>
+
+      <div class="table-container">
+        <table>
+          <caption>Semester 4 Section B - Weekly Schedule</caption>
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">09:00 - 10:00 AM</th>
+              <th scope="col">10:00 - 11:00 AM</th>
+              <th scope="col">11:00 - 11:15 AM</th>
+              <th scope="col">11:15 - 12:15 PM</th>
+              <th scope="col">12:15 - 01:15 PM</th>
+              <th scope="col">01:15 - 02:00 PM</th>
+              <th scope="col">02:00 - 04:00 PM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="day-col">Monday</td>
+              <td>CS401 (DBMS)<br><small>Dr. A. Verma</small></td>
+              <td>CS402 (OS)<br><small>Prof. S. Sen</small></td>
+              <td rowspan="6" class="break-cell">Tea<br>Break</td>
+              <td>CS403 (DAA)<br><small>Dr. K. Raman</small></td>
+              <td>CS404 (SE)<br><small>Prof. M. Joshi</small></td>
+              <td rowspan="6" class="break-cell">Lunch<br>Break</td>
+              <td class="lab-cell">CS405: DBMS Lab (Batch 1)<br>CS406: OS Lab (Batch 2)</td>
+            </tr>
+            <tr>
+              <td class="day-col">Tuesday</td>
+              <td>CS403 (DAA)<br><small>Dr. K. Raman</small></td>
+              <td>CS401 (DBMS)<br><small>Dr. A. Verma</small></td>
+              <td>CS402 (OS)<br><small>Prof. S. Sen</small></td>
+              <td>CS404 (SE)<br><small>Prof. M. Joshi</small></td>
+              <td class="lab-cell">CS406: OS Lab (Batch 1)<br>CS405: DBMS Lab (Batch 2)</td>
+            </tr>
+            <tr>
+              <td class="day-col">Wednesday</td>
+              <td>CS404 (SE)<br><small>Prof. M. Joshi</small></td>
+              <td>CS403 (DAA)<br><small>Dr. K. Raman</small></td>
+              <td>CS401 (DBMS)<br><small>Dr. A. Verma</small></td>
+              <td>Library / Self Study</td>
+              <td>Tutorial Session<br>(DAA / OS Problem Solving)</td>
+            </tr>
+            <tr>
+              <td class="day-col">Thursday</td>
+              <td>CS402 (OS)<br><small>Prof. S. Sen</small></td>
+              <td>CS404 (SE)<br><small>Prof. M. Joshi</small></td>
+              <td>CS401 (DBMS)<br><small>Dr. A. Verma</small></td>
+              <td>CS403 (DAA)<br><small>Dr. K. Raman</small></td>
+              <td class="lab-cell">Web Tech &amp; Programming Lab<br>Computer Lab 2</td>
+            </tr>
+            <tr>
+              <td class="day-col">Friday</td>
+              <td>CS403 (DAA)<br><small>Dr. K. Raman</small></td>
+              <td>CS402 (OS)<br><small>Prof. S. Sen</small></td>
+              <td>CS404 (SE)<br><small>Prof. M. Joshi</small></td>
+              <td>CS401 (DBMS)<br><small>Dr. A. Verma</small></td>
+              <td>Technical Seminar /<br>Aptitude Training</td>
+            </tr>
+            <tr>
+              <td class="day-col">Saturday</td>
+              <td>Remedial / Doubt Class</td>
+              <td>Project Mentorship</td>
+              <td>Group Discussion</td>
+              <td>Sports / Extra-Curricular</td>
+              <td><em>Weekend Off</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Subject Legend Box -->
+      <div class="legend-box">
+        <h3>Subject Code &amp; Lab Index</h3>
+        <ul>
+          <li><strong>CS401:</strong> Database Management Systems (Room 302)</li>
+          <li><strong>CS402:</strong> Operating Systems (Room 304)</li>
+          <li><strong>CS403:</strong> Design &amp; Analysis of Algorithms (Room 302)</li>
+          <li><strong>CS404:</strong> Software Engineering (Room 305)</li>
+          <li><strong>CS405:</strong> DBMS Laboratory (Computer Lab 2)</li>
+          <li><strong>CS406:</strong> Operating Systems Laboratory (Computer Lab 1)</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - Dashboard</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Accessibility: Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header */
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2, .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 10px;
+    }
+
+    /* Welcome Banner */
+    .welcome-banner {
+      background-color: #f0f7ff;
+      border: 1px solid #b8d2eb;
+      border-left: 5px solid #0056b3;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    .welcome-banner h2 {
+      color: #003366;
+      margin-bottom: 5px;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    /* Grid layout */
+    .dashboard-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .grid-col {
+      flex: 1 1 calc(50% - 20px);
+      min-width: 280px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid #cccccc;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e6f0fa;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9fbfd;
+    }
+
+    /* Status Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 12px;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    .badge-green {
+      background-color: #e2f0d9;
+      color: #385723;
+      border: 1px solid #c5e0b4;
+    }
+
+    .badge-yellow {
+      background-color: #fff2cc;
+      color: #7f6000;
+      border: 1px solid #ffe699;
+    }
+
+    .badge-blue {
+      background-color: #e6f0fa;
+      color: #003366;
+      border: 1px solid #b8d2eb;
+    }
+
+    /* Links inside cards */
+    .view-more {
+      display: inline-block;
+      margin-top: 8px;
+      color: #0056b3;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .view-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Quick Action Buttons */
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .quick-link-btn {
+      display: inline-block;
+      background-color: #e6f0fa;
+      color: #003366;
+      padding: 8px 14px;
+      text-decoration: none;
+      border: 1px solid #b8d2eb;
+      border-radius: 3px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .quick-link-btn:hover {
+      background-color: #d0e4f7;
+    }
+
+    /* Simple lists */
+    .styled-list {
+      list-style-type: none;
+      margin-top: 8px;
+    }
+
+    .styled-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #e0e0e0;
+      font-size: 14px;
+    }
+
+    .styled-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+      .grid-col {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html">Attendance</a></li>
+      <li><a href="Assignment.html">Assignments</a></li>
+      <li><a href="Events.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="resutls.html">Results</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Welcome Message -->
+    <section class="welcome-banner">
+      <h2>Welcome back, Rahul Sharma!</h2>
+      <p>Enrollment No: <strong>2024CS1042</strong> | Degree: <strong>B.Tech Computer Science &amp; Engineering</strong> | Semester: <strong>4 (2nd Year)</strong></p>
+    </section>
+
+    <!-- Dashboard Content Columns -->
+    <div class="dashboard-grid">
+
+      <!-- Column 1: Student Details & Attendance Summary -->
+      <div class="grid-col">
+        <!-- Student Details Summary -->
+        <section class="card">
+          <h3>Student Details Summary</h3>
+          <div class="table-container">
+            <table>
+              <tr>
+                <th scope="row">Full Name</th>
+                <td>Rahul Sharma</td>
+              </tr>
+              <tr>
+                <th scope="row">Enrollment No.</th>
+                <td>2024CS1042</td>
+              </tr>
+              <tr>
+                <th scope="row">Department</th>
+                <td>Computer Science &amp; Engineering</td>
+              </tr>
+              <tr>
+                <th scope="row">Current Semester</th>
+                <td>Semester 4 (Section B)</td>
+              </tr>
+              <tr>
+                <th scope="row">Academic Status</th>
+                <td><span class="badge badge-green">Regular / Active</span></td>
+              </tr>
+            </table>
+          </div>
+          <a href="profile.html" class="view-more">View Full Profile &rarr;</a>
+        </section>
+
+        <!-- Attendance Summary -->
+        <section class="card">
+          <h3>Attendance Summary</h3>
+          <p>Minimum attendance requirement: <strong>75%</strong></p>
+          <div class="table-container">
+            <table>
+              <tr>
+                <th scope="row">Total Lectures Held</th>
+                <td>148</td>
+              </tr>
+              <tr>
+                <th scope="row">Total Lectures Attended</th>
+                <td>127</td>
+              </tr>
+              <tr>
+                <th scope="row">Overall Attendance</th>
+                <td><strong>85.8%</strong></td>
+              </tr>
+              <tr>
+                <th scope="row">Exam Eligibility</th>
+                <td><span class="badge badge-green">Eligible</span></td>
+              </tr>
+            </table>
+          </div>
+          <a href="Attendance.html" class="view-more">View Detailed Subject Attendance &rarr;</a>
+        </section>
+      </div>
+
+      <!-- Column 2: Upcoming Assignments & Recent Notices -->
+      <div class="grid-col">
+        <!-- Upcoming Assignments -->
+        <section class="card">
+          <h3>Upcoming Assignments</h3>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Assignment</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DBMS</td>
+                  <td>SQL Queries &amp; Triggers</td>
+                  <td>28-Oct-2026</td>
+                  <td><span class="badge badge-yellow">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>OS</td>
+                  <td>Process Scheduling Lab</td>
+                  <td>02-Nov-2026</td>
+                  <td><span class="badge badge-blue">In Progress</span></td>
+                </tr>
+                <tr>
+                  <td>SE</td>
+                  <td>SRS Document Draft</td>
+                  <td>08-Nov-2026</td>
+                  <td><span class="badge badge-yellow">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="Assignment.html" class="view-more">View All Assignments &rarr;</a>
+        </section>
+
+        <!-- Recent Notices -->
+        <section class="card">
+          <h3>Recent College Notices</h3>
+          <ul class="styled-list">
+            <li>
+              <strong>20-Oct-2026:</strong> Mid-Term Sessional Examination Schedule Announced for 4th Semester.
+            </li>
+            <li>
+              <strong>17-Oct-2026:</strong> Central Library Book Return and Clearance Deadline.
+            </li>
+            <li>
+              <strong>12-Oct-2026:</strong> National Scholarship Portal Renewal Applications Open.
+            </li>
+          </ul>
+          <a href="notices.html" class="view-more">View All Notices &rarr;</a>
+        </section>
+      </div>
+
+    </div>
+
+    <!-- Links to All Modules -->
+    <section class="card">
+      <h3>Quick Access to All Portal Modules</h3>
+      <p>Select any module below to quickly open the respective page:</p>
+      <div class="quick-links">
+        <a href="Courses.html" class="quick-link-btn">Registered Courses</a>
+        <a href="Attendance.html" class="quick-link-btn">Attendance Record</a>
+        <a href="Assignment.html" class="quick-link-btn">Assignment Submissions</a>
+        <a href="Events.html" class="quick-link-btn">Campus Events</a>
+        <a href="notices.html" class="quick-link-btn">Official Notices</a>
+        <a href="resutls.html" class="quick-link-btn">Semester Results</a>
+        <a href="timetable.html" class="quick-link-btn">Class Timetable</a>
+        <a href="profile.html" class="quick-link-btn">My Profile</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+</body>
+</html>

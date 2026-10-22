@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - Home | College Student Portal</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2,
+    .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    /* Simulated Login Form Box */
+    .login-box {
+      background-color: #f8fbfe;
+      border: 1px solid #b8d2eb;
+      border-radius: 4px;
+      padding: 16px;
+      max-width: 450px;
+      margin: 15px 0;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #999999;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+    /* Error Validation Styles */
+    .form-group.error input[type="text"],
+    .form-group.error input[type="email"],
+    .form-group.error input[type="password"],
+    .form-group.error select {
+      border-color: #d9534f;
+      background-color: #fff8f8;
+    }
+
+    .form-group .error-msg {
+      display: none;
+      color: #c9302c;
+      font-size: 12px;
+      margin-top: 4px;
+      font-weight: normal;
+    }
+
+    .form-group.error .error-msg {
+      display: block;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: #0056b3;
+      color: #ffffff;
+      padding: 9px 18px;
+      text-decoration: none;
+      border: 1px solid #004085;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #004085;
+    }
+
+    .notice-note {
+      font-size: 13px;
+      color: #555555;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* Modules List */
+    .modules-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .module-card {
+      flex: 1 1 calc(33.333% - 15px);
+      min-width: 240px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 12px;
+      background-color: #fafbfc;
+    }
+
+    .module-card h4 {
+      color: #003366;
+      margin-bottom: 6px;
+    }
+
+    .module-card p {
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #444444;
+    }
+
+    .module-card a {
+      color: #0056b3;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .module-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+
+      .module-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html">Attendance</a></li>
+      <li><a href="Assignment.html">Assignments</a></li>
+      <li><a href="Events.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="resutls.html">Results</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Welcome Section -->
+    <section class="card">
+      <h2>Welcome to StudentHub</h2>
+      <p>
+        StudentHub is a unified web-based student portal designed for college students to easily manage their daily
+        academic activities.
+        Through this portal, enrolled students can view their personal profile, track semester course registrations,
+        check subject-wise attendance, review pending assignments, view college circulars, download semester mark
+        sheets, and check class timetables.
+      </p>
+      <p>
+        This website is built as a beginner-level college practical project demonstrating clean HTML5 semantic markup,
+        structured tables, accessible form elements, and responsive CSS styling.
+      </p>
+    </section>
+
+    <!-- Student Portal Quick Access / Login Simulation -->
+    <section class="card">
+      <h2>Student Portal Login</h2>
+      <p>Enter your college enrollment credentials to access your student dashboard:</p>
+
+      <div class="login-box">
+        <form action="Dashboard.html" method="get">
+          <div class="form-group">
+            <label for="enrollment-number">Enrollment / Roll Number:</label>
+            <input type="text" id="enrollment-number" name="enrollment" value="2024CS1042" required>
+          </div>
+          <div class="form-group">
+            <label for="student-password">Password:</label>
+            <input type="password" id="student-password" name="password" value="********" required>
+          </div>
+          <button type="submit" class="btn">Login to Dashboard</button>
+        </form>
+        <p class="notice-note">
+          * Note for practical evaluation: No backend database is attached. Clicking "Login to Dashboard" directly
+          navigates to Dashboard.html.
+        </p>
+      </div>
+    </section>
+
+    <!-- New Student Registration Form (Validated with script.js) -->
+    <section class="card" id="registration-section">
+      <h2>New Student Registration Form</h2>
+      <p>Fill out the registration details below. All fields are validated in real-time by <strong>script.js</strong> using regular expressions:</p>
+
+      <div class="login-box" style="max-width: 550px;">
+        <form id="registrationForm" novalidate>
+          <div class="form-group" id="group-name">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter 3-50 letters (e.g. Rahul Sharma)">
+            <span class="error-msg">Name must be 3 to 50 alphabetic characters.</span>
+          </div>
+
+          <div class="form-group" id="group-email">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="e.g. rahul@college.edu">
+            <span class="error-msg">Please enter a valid email address.</span>
+          </div>
+
+          <div class="form-group" id="group-mobile">
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" placeholder="10 digits starting with 6-9 (e.g. 9876543210)">
+            <span class="error-msg">Mobile number must be 10 digits starting with 6, 7, 8, or 9.</span>
+          </div>
+
+          <div class="form-group" id="group-password">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Min 8 chars (1 upper, 1 lower, 1 digit, 1 special)">
+            <span class="error-msg">Password must be at least 8 chars with 1 uppercase, 1 lowercase, 1 digit, and 1 special symbol (@$!%*?&).</span>
+          </div>
+
+          <div class="form-group" id="group-confirmPassword">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password to match">
+            <span class="error-msg">Passwords do not match.</span>
+          </div>
+
+          <div class="form-group" id="group-course">
+            <label for="course">Select Course:</label>
+            <select id="course" name="course">
+              <option value="">-- Choose Course --</option>
+              <option value="BTech-CSE">B.Tech - Computer Science &amp; Engineering</option>
+              <option value="BTech-IT">B.Tech - Information Technology</option>
+              <option value="BTech-ECE">B.Tech - Electronics &amp; Communication</option>
+              <option value="BTech-ME">B.Tech - Mechanical Engineering</option>
+            </select>
+            <span class="error-msg">Please select your course.</span>
+          </div>
+
+          <div class="form-group" id="group-year">
+            <label for="year">Academic Year:</label>
+            <select id="year" name="year">
+              <option value="">-- Choose Academic Year --</option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
+            </select>
+            <span class="error-msg">Please select your academic year.</span>
+          </div>
+
+          <div class="form-group" id="group-gender">
+            <label>Gender:</label>
+            <label style="display:inline-block; font-weight:normal; margin-right:15px; cursor:pointer;">
+              <input type="radio" name="gender" value="male"> Male
+            </label>
+            <label style="display:inline-block; font-weight:normal; margin-right:15px; cursor:pointer;">
+              <input type="radio" name="gender" value="female"> Female
+            </label>
+            <label style="display:inline-block; font-weight:normal; cursor:pointer;">
+              <input type="radio" name="gender" value="other"> Other
+            </label>
+            <span class="error-msg">Please select your gender.</span>
+          </div>
+
+          <div class="form-group" id="group-terms">
+            <label style="display:inline-block; font-weight:normal; cursor:pointer;">
+              <input type="checkbox" id="terms" name="terms"> I agree to the college portal terms &amp; conditions
+            </label>
+            <span class="error-msg">You must accept the terms and conditions.</span>
+          </div>
+
+          <div style="margin-top: 15px;">
+            <button type="submit" class="btn">Submit Registration</button>
+            <button type="reset" class="btn" style="background-color: #6c757d; border-color: #5a6268; margin-left: 8px;">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Direct Navigation to All Modules -->
+    <section class="card">
+      <h2>Explore Portal Modules</h2>
+      <p>You can also navigate directly to any module using the quick links below:</p>
+
+      <div class="modules-grid">
+        <div class="module-card">
+          <h4>Student Dashboard</h4>
+          <p>Overview of academic status, attendance score, and recent activity.</p>
+          <a href="Dashboard.html">Go to Dashboard &rarr;</a>
+        </div>
+
+        <div class="module-card">
+          <h4>Student Profile</h4>
+          <p>Personal details, branch, semester, contact information, and editable form.</p>
+          <a href="profile.html">Go to Profile &rarr;</a>
+        </div>
+
+        <div class="module-card">
+          <h4>Course Registration</h4>
+          <p>List of enrolled theory and lab subjects with faculty details.</p>
+          <a href="Courses.html">Go to Courses &rarr;</a>
+        </div>
+
+        <div class="module-card">
+          <h4>Attendance Tracker</h4>
+          <p>Subject-wise classes held, classes attended, and attendance percentage.</p>
+          <a href="Attendance.html">Go to Attendance &rarr;</a>
+        </div>
+
+        <div class="module-card">
+          <h4>Assignment Portal</h4>
+          <p>List of upcoming assignments, deadlines, submission status, and upload form.</p>
+          <a href="Assignment.html">Go to Assignments &rarr;</a>
+        </div>
+
+        <div class="module-card">
+          <h4>Campus Events</h4>
+          <p>Upcoming symposiums, hackathons, sports meets, and technical workshops.</p>
+          <a href="Events.html">Go to Events &rarr;</a>
+        </div>
+
+        <div class="module-card">
+          <h4>College Notices</h4>
+          <p>Official notices, exam circulars, and departmental announcements.</p>
+          <a href="notices.html">Go to Notices &rarr;</a>
+        </div>
+
+        <div class="module-card">
+          <h4>Semester Results</h4>
+          <p>Academic performance, marks breakdown, grades, SGPA, and CGPA.</p>
+          <a href="resutls.html">Go to Results &rarr;</a>
+        </div>
+
+        <div class="module-card">
+          <h4>Class Timetable</h4>
+          <p>Weekly schedule of theory lectures and practical laboratory sessions.</p>
+          <a href="timetable.html">Go to Timetable &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Specifications Summary -->
+    <section class="card">
+      <h2>About This Practical Project</h2>
+      <p>
+        <strong>Project Name:</strong> StudentHub - Simple Student Portal Website<br>
+        <strong>Technologies Used:</strong> Pure HTML5 &amp; Basic Internal CSS<br>
+        <strong>Target Audience:</strong> College Students and Practical Examiners<br>
+        <strong>Total Project Pages:</strong> 10 Linked HTML Pages
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+  <!-- Link to External Validation Script -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>

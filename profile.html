@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - Student Profile</title>
+  <style>
+    /* StudentHub Portal Basic Stylesheet */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* Accessibility: Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background-color: #004085;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header */
+    header {
+      background-color: #e6f0fa;
+      border-bottom: 2px solid #b8d2eb;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #003366;
+      margin-bottom: 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #444444;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #d9e8f5;
+      border-bottom: 1px solid #b8d2eb;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 6px 0;
+    }
+
+    .nav-menu li {
+      margin: 2px 4px;
+    }
+
+    .nav-menu a {
+      display: inline-block;
+      color: #003366;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c0daf0;
+      text-decoration: underline;
+    }
+
+    .nav-menu a.active {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2, .card h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e6f0fa;
+      padding-bottom: 6px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid #cccccc;
+      padding: 9px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e6f0fa;
+      color: #003366;
+      font-weight: bold;
+      width: 30%;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9fbfd;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #333333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      max-width: 500px;
+      padding: 8px 10px;
+      border: 1px solid #999999;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 75px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: #0056b3;
+      color: #ffffff;
+      padding: 9px 18px;
+      text-decoration: none;
+      border: 1px solid #004085;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #004085;
+    }
+
+    .btn-reset {
+      background-color: #e2e8f0;
+      color: #333333;
+      border: 1px solid #cbd5e1;
+      margin-left: 8px;
+    }
+
+    .btn-reset:hover {
+      background-color: #cbd5e1;
+    }
+
+    .info-note {
+      font-size: 13px;
+      color: #555555;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e6f0fa;
+      border-top: 2px solid #b8d2eb;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu li {
+        text-align: center;
+        margin: 2px 0;
+      }
+      th {
+        width: 40%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <h1>StudentHub</h1>
+    <p>City Engineering College - Student Portal Practical Project</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav aria-label="Main Navigation">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html" class="active">Profile</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="Attendance.html">Attendance</a></li>
+      <li><a href="Assignment.html">Assignments</a></li>
+      <li><a href="Events.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="resutls.html">Results</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Official Student Profile Information -->
+    <section class="card">
+      <h2>Student Profile Information</h2>
+      <p>Official academic records registered with City Engineering College registrar office:</p>
+      
+      <div class="table-container">
+        <table>
+          <caption>Official Academic &amp; Personal Details</caption>
+          <tbody>
+            <tr>
+              <th scope="row">Full Name</th>
+              <td>Rahul Sharma</td>
+            </tr>
+            <tr>
+              <th scope="row">Enrollment / Roll Number</th>
+              <td>2024CS1042</td>
+            </tr>
+            <tr>
+              <th scope="row">Degree Course</th>
+              <td>Bachelor of Technology (B.Tech)</td>
+            </tr>
+            <tr>
+              <th scope="row">Department</th>
+              <td>Computer Science &amp; Engineering</td>
+            </tr>
+            <tr>
+              <th scope="row">Current Semester</th>
+              <td>Semester 4 (Year 2)</td>
+            </tr>
+            <tr>
+              <th scope="row">Class Section</th>
+              <td>Section B</td>
+            </tr>
+            <tr>
+              <th scope="row">Academic Batch</th>
+              <td>2024 - 2028</td>
+            </tr>
+            <tr>
+              <th scope="row">College Email ID</th>
+              <td>rahul.sharma24@college.edu</td>
+            </tr>
+            <tr>
+              <th scope="row">Date of Birth</th>
+              <td>15-August-2004</td>
+            </tr>
+            <tr>
+              <th scope="row">Blood Group</th>
+              <td>B+</td>
+            </tr>
+            <tr>
+              <th scope="row">Guardian / Father Name</th>
+              <td>Mr. Suresh Sharma</td>
+            </tr>
+            <tr>
+              <th scope="row">Guardian Contact Number</th>
+              <td>+91 98765 12345</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Editable Contact Information Form (Demo) -->
+    <section class="card">
+      <h2>Edit Contact Details (Sample Form)</h2>
+      <p>Students can submit update requests for their communication address and personal contact number below:</p>
+      
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="student-phone">Contact Phone Number:</label>
+          <input type="tel" id="student-phone" name="phone" value="+91 98765 43210" required>
+        </div>
+
+        <div class="form-group">
+          <label for="personal-email">Personal Email Address:</label>
+          <input type="email" id="personal-email" name="email" value="rahul.personal@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="residential-address">Current Residential Address:</label>
+          <textarea id="residential-address" name="address" rows="3" required>Flat 302, Green Avenue, College Road, City - 400001</textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="emergency-contact">Emergency Contact Person &amp; Relation:</label>
+          <input type="text" id="emergency-contact" name="emergency_contact" value="Mr. Suresh Sharma (Father) - +91 98765 12345" required>
+        </div>
+
+        <div class="form-group">
+          <label for="preferred-mode">Preferred Communication Mode:</label>
+          <select id="preferred-mode" name="preferred_mode">
+            <option value="email" selected>College Email</option>
+            <option value="sms">SMS / Mobile</option>
+            <option value="postal">Postal Mail</option>
+          </select>
+        </div>
+
+        <div>
+          <button type="submit" class="btn">Save Profile Changes</button>
+          <button type="reset" class="btn btn-reset">Reset Form</button>
+        </div>
+
+        <p class="info-note">
+          * Practical Note: This is an editable-looking HTML frontend form. As per practical requirements, no backend server or database is attached.
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025-2026 StudentHub | College Student Portal Practical Project</p>
+    <p>City Engineering College - Department of Computer Science &amp; Engineering</p>
+  </footer>
+
+</body>
+</html>
